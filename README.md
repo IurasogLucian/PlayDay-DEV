@@ -1,1 +1,2 @@
-# special-telegram
+# PlayDay
+> Repo for rehearse GIT commands
