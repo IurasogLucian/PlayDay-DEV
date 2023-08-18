@@ -4,30 +4,6 @@ on:
   push:
     branches:
       - '*'
-
-jobs:
-  sync_branches:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout Source Repository
-        uses: actions/checkout@v2
-        with:
-          repository: IurasogLucian/PlayDay-DEV
-          ref: ${{ github.ref }}
-
-      - name: Set Up Git
-        run: |
-            git config --global user.email "actions@github.com"
-            git config --global user.name "GitHub Actions"
-            ls -alh
-            git remote -v
-            git pull -p --all
-            git remote add destination https://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@github.com/CloudOpsWorld/PlayDev
-            git remote -v
-            git push -f destination --all
-
-on: [push]
 jobs:
     sync_branches:
       runs-on: ubuntu-latest
