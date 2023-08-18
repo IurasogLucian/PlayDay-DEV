@@ -22,5 +22,5 @@ jobs:
             git config --global user.name "GitHub Actions"
             ls -alh
             git pull -p --all
-            git remote add destination https://${{secrets.GIT_TOKEN}}@github.com/CloudOpsWorld/PlayDev.git
+            git remote add destination https://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@github.com/CloudOpsWorld/PlayDev.git
             git push -f destination --all
