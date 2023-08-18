@@ -21,6 +21,7 @@ jobs:
         with:
           repository: CloudOpsWorld/PlayDev
           path: destination
+          token: ${{ secrets.GIT_TOKEN }}
 
       - name: Sync Branches
         uses: repo-sync/github-sync@v2
