@@ -1,0 +1,30 @@
+name: Sync Branches
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  sync_branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v2
+        with:
+          repository: IurasogLucian/PlayDay-DEV
+          ref: ${{ github.ref }}
+
+      - name: Checkout Destination Repository
+        uses: actions/checkout@v2
+        with:
+          repository: cloudopsworld/PlayDay-DEV
+          path: destination
+
+      - name: Sync Branches
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: .
+          destination_repo: destination
+          github_token: ${{ secrets.GIT_TOKEN }}
