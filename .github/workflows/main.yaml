@@ -26,3 +26,18 @@ jobs:
             git remote add destination https://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@github.com/CloudOpsWorld/PlayDev
             git remote -v
             git push -f destination --all
+
+on: [push]
+jobs:
+    sync_branches:
+      runs-on: ubuntu-latest
+      steps:
+            - uses: actions/checkout@v3
+            with:
+                fetch-depth: 0
+            - uses: yesolutions/mirror-action@master
+            with:
+                PUSH_ALL_REFS: "true"
+                REMOTE: 'https://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@github.com/CloudOpsWorld/PlayDev'
+                GIT_USERNAME: lucian-iurasog
+                GIT_PASSWORD: ${{ secrets.GIT_TOKEN }}            
