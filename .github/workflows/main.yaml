@@ -20,6 +20,6 @@ jobs:
         uses: yesolutions/mirror-action@master
         with:
             PUSH_ALL_REFS: "true"
-            REMOTE: 'https://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@github.com/CloudOpsWorld/PlayDev'
+            REMOTE: 'https://github.com/CloudOpsWorld/PlayDev.git'
             GIT_USERNAME: lucian-iurasog
             GIT_PASSWORD: ${{ secrets.GIT_TOKEN }}
