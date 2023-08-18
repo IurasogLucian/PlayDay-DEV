@@ -19,7 +19,7 @@ jobs:
       - name: Checkout Destination Repository
         uses: actions/checkout@v2
         with:
-          repository: cloudopsworld/PlayDay-DEV
+          repository: CloudOpsWorld/PlayDev
           path: destination
 
       - name: Sync Branches
