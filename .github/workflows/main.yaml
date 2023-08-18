@@ -4,16 +4,22 @@ on:
   push:
     branches:
       - '*'
+
 jobs:
-    sync_branches:
-      runs-on: ubuntu-latest
-      steps:
-            - uses: actions/checkout@v3
-            with:
-                fetch-depth: 0
-            - uses: yesolutions/mirror-action@master
-            with:
-                PUSH_ALL_REFS: "true"
-                REMOTE: 'https://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@github.com/CloudOpsWorld/PlayDev'
-                GIT_USERNAME: lucian-iurasog
-                GIT_PASSWORD: ${{ secrets.GIT_TOKEN }}            
+  sync_branches:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Source Repository
+        uses: actions/checkout@v2
+        with:
+          repository: IurasogLucian/PlayDay-DEV
+          ref: ${{ github.ref }}
+
+      - name: Mirror
+        uses: yesolutions/mirror-action@master
+        with:
+            PUSH_ALL_REFS: "true"
+            REMOTE: 'https://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@github.com/CloudOpsWorld/PlayDev'
+            GIT_USERNAME: lucian-iurasog
+            GIT_PASSWORD: ${{ secrets.GIT_TOKEN }}
