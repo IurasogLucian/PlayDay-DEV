@@ -20,6 +20,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: CloudOpsWorld/PlayDev
+          ref: ${{ github.ref }}
           path: destination
           token: ${{ secrets.GIT_TOKEN }}
 
