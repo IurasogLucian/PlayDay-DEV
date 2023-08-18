@@ -23,6 +23,6 @@ jobs:
             ls -alh
             git remote -v
             git pull -p --all
-            git remote add destination https://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@github.com/CloudOpsWorld/PlayDev.git
+            git remote add destination https://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@github.com/CloudOpsWorld/PlayDev
             git remote -v
             git push -f destination --all
