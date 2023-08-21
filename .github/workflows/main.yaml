@@ -22,3 +22,4 @@ jobs:
             PUSH_ALL_REFS: "true"
             REMOTE: 'ssh://git@github.com:CloudOpsWorld/PlayDev.git'
             GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_PRIVATE_SSH }}
+            GIT_SSH_NO_VERIFY_HOST: "true"
