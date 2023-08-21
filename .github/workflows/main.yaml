@@ -23,4 +23,5 @@ jobs:
       - name: Mirror Repository
         run: |
           git remote add mirror ssh://git@github.com/CloudOpsWorld/PlayDev.git
-          git push --mirror mirror --force --all --tags
+          git push --mirror mirror --force --all
+          git push --mirror mirror --force --tags
