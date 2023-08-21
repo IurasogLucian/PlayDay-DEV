@@ -15,7 +15,11 @@ jobs:
         with:
           repository: IurasogLucian/PlayDay-DEV
           ref: ${{ github.ref }}
-
+      - name: Set up Git
+        run: |
+          git fsck --full --unreachable
+          git prune
+          git gc --aggressive
       - name: Mirror
         uses: yesolutions/mirror-action@master
         with:
