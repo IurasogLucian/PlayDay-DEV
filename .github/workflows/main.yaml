@@ -6,24 +6,21 @@ on:
       - '*'
 
 jobs:
-  mirroring:
+  mirror:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Source Repository
+      - name: Checkout Repository
         uses: actions/checkout@v2
-        with:
-          repository: IurasogLucian/PlayDay-DEV
-          ref: ${{ github.ref }}
-      - name: Set up Git
+
+      - name: Set up SSH key
         run: |
-          git fsck --full --unreachable
-          git prune
-          git gc --aggressive
-      - name: Mirror
-        uses: yesolutions/mirror-action@master
-        with:
-            PUSH_ALL_REFS: "true"
-            REMOTE: 'ssh://git@github.com/CloudOpsWorld/PlayDev.git'
-            GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_PRIVATE_SSH }}
-            GIT_SSH_NO_VERIFY_HOST: "true"
+          mkdir -p ~/.ssh
+          echo "${{ secrets.GIT_PRIVATE_SSH }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+
+      - name: Mirror Repository
+        run: |
+          git remote add mirror git@github.com:CloudOpsWorld/PlayDev.git
+          git push --mirror mirror
