@@ -20,6 +20,5 @@ jobs:
         uses: yesolutions/mirror-action@master
         with:
             PUSH_ALL_REFS: "true"
-            REMOTE: 'https://${{ secrets.GIT_TOKEN }}@github.com/CloudOpsWorld/PlayDev.git'
-            # # GIT_USERNAME: cow-main
-            # GIT_PASSWORD: 
+            REMOTE: 'ssh://git@github.com:CloudOpsWorld/PlayDev.git'
+            GIT_SSH_PRIVATE_KEY: ${{ secrets.GIT_PRIVATE_SSH }}
